@@ -1,0 +1,30 @@
+<div>
+  <form [formGroup]="generalForm">
+    <div>
+      <label for="name">Name:</label>
+      <input 
+        formControlName="name"
+        autocomplete="off"
+        type="text"
+        name="name"
+        id="name"
+      >
+      <em [hidden]="
+        !(hasError('name', 'required') &&
+        getFormControl('name').touched)">Required!!</em>
+    </div>
+    <div>
+      <label for="ssn">SSN:</label>
+      <input 
+        formControlName="ssn"
+        autocomplete="off"
+        type="text"
+        name="ssn"
+        id="ssn"
+      >
+      <em [hidden]="
+        !(hasError('ssn', 'ssn') &&
+        getFormControl('ssn').touched)">Invalid SSN!!</em>
+    </div>
+  </form>
+</div>
