@@ -11,8 +11,11 @@ import { ssnValidator } from './utils/custom-validators';
 export class AppComponent {
   generalForm = this.fb.group({
     name: ['', Validators.required],
-    ssn: ['', ssnValidator],
-    email: [''],
+    socialSecurity: ['', ssnValidator],
+    passwordGroup: this.fb.group({
+      password: ['', Validators.minLength(4)],
+      confirmPassword: ['']
+    }),
     address: [''],
   });
 
@@ -22,7 +25,15 @@ export class AppComponent {
     return this.getFormControl(control).hasError(error);
   }
 
+  hasPasswordError(control: string, error: string[]): boolean {
+    return this.getNestedFormControl(control).hasError(error);
+  }
+
   getFormControl(control: string): AbstractControl {
     return this.generalForm.controls[control];
+  }
+
+  getNestedFormControl(nestedControl: string): AbstractControl {
+    return this.generalForm.controls.passwordGroup[nestedControl];
   }
 }

@@ -14,17 +14,42 @@
         getFormControl('name').touched)">Required!!</em>
     </div>
     <div>
-      <label for="ssn">SSN:</label>
+      <label for="socialSecurity">SSN:</label>
       <input 
-        formControlName="ssn"
+        formControlName="socialSecurity"
         autocomplete="off"
         type="text"
-        name="ssn"
-        id="ssn"
+        name="socialSecurity"
+        id="socialSecurity"
       >
       <em [hidden]="
-        !(hasError('ssn', 'ssn') &&
-        getFormControl('ssn').touched)">Invalid SSN!!</em>
+        !(hasError('socialSecurity', 'ssn') &&
+        getFormControl('socialSecurity').touched)">Invalid SSN!!</em>
+    </div>
+    <div formGroupName="passwordGroup">
+      <div>
+        <label for="password">Password:</label>
+        <input 
+          formControlName="password"
+          autocomplete="off"
+          type="text"
+          name="password"
+          id="password"
+        >
+        <em [hidden]="
+          !(hasPasswordError('password', 'minlenght') &&
+          getNestedFormControl('password').touched)">Password must have at least 5 characters</em>
+      </div>
+      <div>
+        <label for="password">Confirm Password:</label>
+        <input 
+          formControlName="confirmPassword"
+          autocomplete="off"
+          type="text"
+          name="confirmPassword"
+          id="confirmPassword"
+        >
+      </div>
     </div>
   </form>
 </div>
